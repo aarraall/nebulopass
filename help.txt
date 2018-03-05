@@ -1,0 +1,11 @@
+---------- MyPrivatePassGen 0.1 ----------
+
+
+commandlist : 
+
+
+'p' -------> purge the password storage
+'c' -------> create a password storage 
+'s' -------> save the created pass
+'q' -------> exit whenever you want
+'h' -------> see the commands 
