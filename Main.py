@@ -17,22 +17,17 @@ def start():
         print("You entered invalid value, try again please :/")
         return start()
 
-def generate():
-    size = int(input("Enter the digit number you need : "))
-    chars = string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation
-    return ''.join(random.SystemRandom().choice(chars) for _ in range(size))
+def generate(size = 0):
+        chars = string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation
 
-"""
-def generated_pass():
-    generate()
-    a = generate()
-    return a
-"""
-def show():
-    print(generate())
+        return ''.join(random.SystemRandom().choice(chars) for _ in range(size))
+
+
+def show(x):
+    print(x)
     c = input("To save 's', to quit 'q', to restart 'r'")
     if c == "s":
-        return save()
+        return save(x)
     elif c == "help":
         return help()
     elif c == "q":
@@ -43,11 +38,10 @@ def show():
         print("Invalid input, generator will be restart!")
         return start()
 
-def save ():
+def save (y):
     purpose = str(input("Enter the purpose or direction of password :  "))
-    a = str(generate())
     file = open("Saved_Pass.txt","a")
-    file.write(a)
+    file.write(y)
     file.write(" ----------------> ")
     file.write(purpose)
     file.write("\n")
@@ -67,11 +61,15 @@ def help():
     start()
 
 def core () :
+    a = int(input("How many digits you need : "))
+    generate(a)
+    generated_pass = generate(a)
+    print(generated_pass)
     option = input("Your password generated. To see 'l', to save 's', to exit 'q'")
     if option == "l":
-        return show()
+        return show(generated_pass)
     elif option == "s":
-        return save()
+        return save(generated_pass)
     elif option == "q":
         return sys.exit()
     else :
