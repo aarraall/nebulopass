@@ -1,11 +1,12 @@
 import random
 import string
 import sys
-import os
+import hashlib
+import base64
+import uuid
 
 def start():
 
-    print("-------------WELCOME TO NEBULOSUS PASS-GEN 0.1----------------")
     a = input("Type 'h' to learn commands ")
     if a == "q":
         sys.exit()
@@ -38,18 +39,15 @@ def show(x):
         print("Invalid input, generator will be restart!")
         return start()
 
-def save (y):
+def save (password2):
     purpose = str(input("Enter the purpose or direction of password :  "))
-    file = open("Saved_Pass.txt","a")
-    file.write(y)
-    file.write(" ----------------> ")
-    file.write(purpose)
-    file.write("\n")
-    file.close()
+    password = open("Saved_Pass.txt","a")
+    password.write(password2)
+    password.write(" ----------------> ")
+    password.write(purpose)
+    password.write("\n")
+    password.close()
 
-
-def purge():
-    os.remove("Saved_Pass.txt")
 
 def help():
     print("mainscreen commands : ", "\n" 
@@ -61,11 +59,12 @@ def help():
     start()
 
 def core () :
+
     a = int(input("How many digits you need : "))
-    generate(a)
     generated_pass = generate(a)
-    print(generated_pass)
+
     option = input("Your password generated. To see 'l', to save 's', to exit 'q'")
+
     if option == "l":
         return show(generated_pass)
     elif option == "s":
@@ -83,6 +82,8 @@ def core () :
 
 
 
+
+print("-------------WELCOME TO NEBULOSUS PASS-GEN 0.1----------------")
 
 
 start()
